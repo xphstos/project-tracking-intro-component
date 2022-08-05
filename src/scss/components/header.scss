@@ -18,6 +18,10 @@
     display: block;
     flex: 0 0 2rem;
 
+    span {
+      @extend %sr-only;
+    }
+
     &-logo {
       @include size(2rem);
       vertical-align: middle;
