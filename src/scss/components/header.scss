@@ -1,0 +1,35 @@
+@use "../functions" as *;
+@use "../helpers" as *;
+@use "../mixins" as *;
+
+.header {
+  @extend %container;
+  position: fixed;
+  width: 100%;
+  top: fluid-rem(2rem, 4rem);
+  left: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 500;
+
+  &__homelink {
+    display: block;
+    flex: 0 0 2rem;
+
+    &-logo {
+      @include size(2rem);
+      vertical-align: middle;
+    }
+  }
+
+  &__mobile-menu {
+    flex: 0 0 2rem;
+    margin-left: auto;
+  }
+
+  &__nav {
+    flex: 1;
+  }
+}

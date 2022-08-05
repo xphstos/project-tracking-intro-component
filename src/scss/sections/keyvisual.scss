@@ -1,0 +1,111 @@
+@use "sass:color" as *;
+@use "../functions" as *;
+@use "../helpers" as *;
+@use "../mixins" as *;
+
+.section {
+  &--keyvisual {
+    --top-padding: calc(
+      var(--header-height, 2rem) + #{fluid-rem(3rem, 5rem)} + #{fluid-rem(
+          2rem,
+          4rem
+        )}
+    );
+    @extend %container;
+    padding-right: unset;
+    padding-block: v("top-padding") fluid-rem(3rem, 5rem);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    gap: 3rem;
+
+    @media screen and (max-width: 960px) {
+      grid-template-columns: 1fr;
+      padding-inline: unset;
+      gap: fluid-rem(4rem, 7rem);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      display: block;
+      top: 0;
+      right: 0;
+      width: 50vw;
+      height: 45vh;
+      border-radius: 0 0 0 4rem;
+      background-color: v("off-white");
+
+      @media screen and (max-width: 960px) {
+        height: calc(var(--top-padding) + #{fluid-rem(15rem, 42rem, 320 960)});
+      }
+    }
+  }
+
+  &__header {
+    width: min(30rem, 100%);
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+      padding-inline: 2rem;
+    }
+  }
+
+  &__graphic {
+    order: 1;
+
+    @media screen and (max-width: 960px) {
+      order: unset;
+    }
+  }
+
+  &__graphic-image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__subtitle {
+    @extend %condensed;
+    color: v("grey-light");
+    text-transform: uppercase;
+    line-height: 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+
+    strong {
+      display: inline-block;
+      padding: 0.125rem 1rem;
+      border-radius: 1.5rem;
+      background-color: v("off-black");
+
+      @extend %condensed-bold;
+      color: v("white");
+    }
+  }
+
+  &__title {
+    font-family: "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    font-size: fluid-rem(2.5rem, 4rem);
+    line-height: 1;
+    margin-block: 0.25em 0.5em;
+  }
+
+  &__description {
+    color: v("grey-dark");
+    margin-block: 1em;
+    line-height: 1.4;
+    font-size: 1.125rem;
+    max-width: 28ch;
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: fluid-rem(1.5rem, 4rem);
+  }
+}
